@@ -46,8 +46,8 @@ df[df['Postal Code'].isna()]
 
 # TODO - Explore this dataset on your owns, ask your own questions
 # filter top 10 products from high total profit
-df.groupby('Product Name')['Profit'].sum().sort_values(ascending = False ).head(10).round(2)
-
+high_prof = df.groupby('Product Name')['Profit'].sum().sort_values(ascending = False ).head(10).round(2)
+print(high_prof)
 # ## Data Analysis Part
 # 
 # Answer 10 below questions to get credit from this course. Write `pandas` code to find answers.
@@ -78,21 +78,20 @@ total_sales = sales_2017['Sales'].sum().round(2)
 avg_sales = sales_2017['Sales'].mean().round(2)
 std_sales = sales_2017['Sales'].std()#.round(2)
 
-print(f'Total = {total_sales}\nAverage = {avg_sales}\nStandard deviation = {std_sales}')
+print(f'Total = {total_sales}\nAverage = {avg_sales}\nStandard deviation = {std_sales:.2f}')
 
 # TODO 06 - which Segment has the highest profit in 2018
 sales_2018 = df[(df['Order Date'].dt.year == 2018)]
-sales_2018.groupby('Segment')['Profit'].sum().sort_values(ascending = False).head(1)
-
+sales_2018 = sales_2018.groupby('Segment')['Profit'].sum().sort_values(ascending = False).head(1)
+print(sales_2018)
 # TODO 07 - which top 5 States have the least total sales between 15 April 2019 - 31 December 2019
 top5_least = df[((df['Order Date'] > '2019-4-15') & (df['Order Date'] < '2019-12-31'))]
-top5_least.groupby('State')['Sales'].sum().sort_values().head()
-
+top5_least = top5_least.groupby('State')['Sales'].sum().sort_values().head()
+print(top5_least)
 # TODO 08 - what is the proportion of total sales (%) in West + Central in 2019 e.g. 25% 
 sales_2019 = df[(df['Order Date'].dt.year == 2019)]
 region_2019 = sales_2019.groupby('Region')['Sales'].sum().reset_index()
-
-#display(region_2019)
+print(region_2019)
 sum_all = region_2019['Sales'].sum()
 print('Total sales in 2019 =', sum_all)
 
@@ -112,7 +111,7 @@ no_of_orders = no_of_orders.reset_index()
 top10 = no_of_orders[['Product Name','count','sum']]
 top10.columns= ['Product Name', 'number of orders', 'total sales']
 print("top 10 popular products in terms of number of orders vs. total sales during 2019-2020")
-#display(top10)
+print(top10)
 
 #print("top 10 popular products in terms of total sales during 2019-2020")
 #total_sales_19_20 = sales_19_20.groupby('Product Name')['Sales'].sum().sort_values(ascending = False).head(10).reset_index()
@@ -152,5 +151,5 @@ merg['no_longer_sale'] = np.where((merg['freq'] == 1) & (merg['Order Date'].dt.y
 
 #filter column no_longer_sale = True
 pro_freq_1 = merg.query('no_longer_sale == True ')
-pro_freq_1[['Order Date', 'Product Name','freq']].sort_values('Order Date')
+pro_freq_1 = pro_freq_1[['Order Date', 'Product Name','freq']].sort_values('Order Date')
 print(pro_freq_1)

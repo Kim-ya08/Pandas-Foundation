@@ -139,6 +139,8 @@ Course: Pandas Foundation
 	df.groupby('Segment')['Profit'].sum().plot(kind='bar',color = ['salmon', 'orange', 'gold'])
 	plt.title('Group by Segment and sum profit')
 
+![segment](https://github.com/Kim-ya08/Course-Pandas-Foundation/assets/123286529/68e938fb-6654-4624-963a-111e2551b848)
+
 
 	# 2nd plot : Group by Segment and sum profit
  
@@ -146,22 +148,24 @@ Course: Pandas Foundation
 	ship_mode = ship_mode['Ship Mode'].value_counts().plot(kind ='bar', color = ['#EDB120', '#7E2F8E', '#D95319', '#A2142F'])
 	plt.title('Number of ordes group by ship mode')
 
+![ship_mode](https://github.com/Kim-ya08/Course-Pandas-Foundation/assets/123286529/d442940b-8309-4802-830a-b568b65d6b12)
+
 # TODO Bonus - use np.where() to create new column in dataframe to help you answer your own questions
-	#find product that sold one time in 2017
+	# Find the products that have sold only once since 2017.
  
 	freq_prod = df['Product Name'].value_counts().sort_values().reset_index()
 	freq_prod.columns = ['Product Name', 'freq']
 	freq_prod
-	#count frequency of each product
+	# count frequency of each product
  
-	#merge freq. with df
+	# merge freq. with df
 	merg = pd.merge(df, freq_prod, on = 'Product Name')
 	
 	merg['Order Date'] = pd.to_datetime(merg['Order Date'], format='%m/%d/%Y')
-	#add new column freq. = 1 and order date in 2017
+	# add new column freq. = 1 and order date in 2017
 	merg['no_longer_sale'] = np.where((merg['freq'] == 1) & (merg['Order Date'].dt.year < 2018) ,True, False )
 	
-	#filter column no_longer_sale = True
+	# filter column no_longer_sale = True
 	pro_freq_1 = merg.query('no_longer_sale == True ')
 	pro_freq_1[['Order Date', 'Product Name','freq']].sort_values('Order Date')
  

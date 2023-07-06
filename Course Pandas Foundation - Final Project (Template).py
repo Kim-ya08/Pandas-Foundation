@@ -153,4 +153,4 @@ merg['no_longer_sale'] = np.where((merg['freq'] == 1) & (merg['Order Date'].dt.y
 #filter column no_longer_sale = True
 pro_freq_1 = merg.query('no_longer_sale == True ')
 pro_freq_1[['Order Date', 'Product Name','freq']].sort_values('Order Date')
-
+print(pro_freq_1)

@@ -124,12 +124,16 @@ print("top 10 popular products in terms of number of orders vs. total sales duri
 df.groupby('Segment')['Profit'].sum().plot(kind='bar',color = ['salmon', 'orange', 'gold'])
 
 plt.title('Group by Segment and sum profit')
+plt.ylabel('Total profit')
+plt.xlabel('Segment')
 plt.show()
 #year = list(df['Order Date'].dt.year.unique())
 
 ship_mode = df[['Order ID','Ship Mode']].drop_duplicates()
 ship_mode = ship_mode['Ship Mode'].value_counts().plot(kind ='bar', color = ['#EDB120', '#7E2F8E', '#D95319', '#A2142F'])
 plt.title('Number of ordes group by ship mode')
+plt.ylabel('Number of orders')
+plt.xlabel('Ship Mode')
 plt.show()
 
 # TODO Bonus - use np.where() to create new column in dataframe to help you answer your own questions

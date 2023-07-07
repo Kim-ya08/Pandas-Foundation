@@ -1,11 +1,7 @@
-# Course-Pandas-Foundation
-Course Pandas Foundation - Final Project (Template)
-
+# Pandas-Foundation
 Date: 05 July 2023
 
 Author: Kanokwan H
-
-Course: Pandas Foundation
 
 # import library
 	import matplotlib.pyplot as plt
@@ -147,7 +143,7 @@ Course: Pandas Foundation
 	region_2019 = sales_2019.groupby('Region')['Sales'].sum().reset_index()
 	print(region_2019)
  
- 	Region	Sales
+ 		Region	Sales
 	0	Central	147429.3760
 	1	East	180685.8220
 	2	South	93610.2235
@@ -256,4 +252,6 @@ Course: Pandas Foundation
 	465  2017-12-05  Hunt BOSTON Model 1606 High-Volume Electric Pe...     1
 	9989 2017-12-19                    RCA ViSYS 25425RE1 Corded phone     1
 
+
+Dataset : https://data.world/stanke/sample-superstore-20204/workspace/file?filename=Sample+-+Superstore.xls
 Final Project from Data Science Bootcamp 8 (DataRockie)
